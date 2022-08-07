@@ -13,6 +13,7 @@ from zipfile import ZipFile
 
 import logging
 import configparser
+import os
 
 # #send Mail
 # from testMailPython import mailDesc
@@ -28,10 +29,11 @@ error_log_data_name = "error_files_log/nse_daily_data_{0}.log".format(
     datetime.now().strftime("%Y_%m_%d")
 )
 
-logging.basicConfig(filename=error_log_data_name, filemode="w")
+# logging.basicConfig(filename=error_log_data_name, filemode="w")
 # conn_string = "host='localhost' dbname='jas' user='postgres' password='sau651994'"
 config = configparser.ConfigParser()
-config.read("config.ini")
+config_file = os.path.join(os.path.dirname(__file__), "config.ini")
+config.read(config_file)
 
 conn_string = "host={0} dbname={1} user={2} password={3}".format(
     config["pgdb"]["host"],
@@ -288,7 +290,7 @@ def historical_bhav_nse_update():
     # url='https://www.nseindia.com/content/historical/EQUITIES/2018/MAR/cm05MAR2018bhav.csv.zip'
 
     ## For Past Update Firebase/Mongo ########
-    start = datetime(2022, 6, 20)
+    start = datetime(2022, 6, 29)
     end = datetime(2022, 8, 7)
     delta = timedelta(days=1)
     d = start

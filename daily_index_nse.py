@@ -27,15 +27,17 @@ from sqlalchemy import create_engine
 from postgresql_conn import Database
 
 import configparser
+import os
 
 error_log_data_name = "error_files_log/nse_daily_index_data_{0}.log".format(
     datetime.now().strftime("%Y_%m_%d")
 )
-logging.basicConfig(filename=error_log_data_name, filemode="w")
+# logging.basicConfig(filename=error_log_data_name, filemode="w")
 
 # conn_string = "host='localhost' dbname='jas' user='postgres' password='sau651994'"
 config = configparser.ConfigParser()
-config.read("config.ini")
+config_file = os.path.join(os.path.dirname(__file__), "config.ini")
+config.read(config_file)
 
 conn_string = "host={0} dbname={1} user={2} password={3}".format(
     config["pgdb"]["host"],

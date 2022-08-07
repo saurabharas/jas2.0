@@ -22,7 +22,7 @@ error_log_data_name = "error_files_log/zerodha_data_{0}.log".format(
     datetime.now().strftime("%Y_%m_%d")
 )
 
-logging.basicConfig(filename=error_log_data_name, filemode="w")
+# logging.basicConfig(filename=error_log_data_name, filemode="w")
 conn_string = "host='localhost' dbname='jas' user='postgres' password='sau651994'"
 db_obj = Database(logging, url=conn_string)
 db_obj.connect()

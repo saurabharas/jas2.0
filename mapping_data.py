@@ -6,12 +6,14 @@ from sqlalchemy import create_engine
 import logging
 from datetime import datetime
 import configparser
+import os
 
 # conn_string = "host='localhost' dbname='jas' user='postgres' password='sau651994'"
 # conn_string_pd = 'postgresql://postgres:sau651994@localhost:5432/jas'
 #'postgresql://whitedwarf:#finre123#@finre.cgk4260wbdoi.ap-south-1.rds.amazonaws.com:5432/finre'
 config = configparser.ConfigParser()
-config.read("config.ini")
+config_file = os.path.join(os.path.dirname(__file__), "config.ini")
+config.read(config_file)
 
 conn_string = "host={0} dbname={1} user={2} password={3}".format(
     config["pgdb"]["host"],
@@ -27,12 +29,12 @@ conn_string_pd = "postgresql://{2}:{3}@{0}:5432/{1}".format(
     eval(config["pgdb"]["pass"]),
 )
 
-logging.basicConfig(
-    filename="error_files_log/mapping_data_{0}.log".format(
-        datetime.now().strftime("%Y_%m_%d")
-    ),
-    filemode="w",
-)
+# logging.basicConfig(
+#     filename="error_files_log/mapping_data_{0}.log".format(
+#         datetime.now().strftime("%Y_%m_%d")
+#     ),
+#     filemode="w",
+# )
 db_conn = Database(logging, url=conn_string)
 db_conn.connect()
 
