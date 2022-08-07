@@ -288,8 +288,8 @@ def historical_bhav_nse_update():
     # url='https://www.nseindia.com/content/historical/EQUITIES/2018/MAR/cm05MAR2018bhav.csv.zip'
 
     ## For Past Update Firebase/Mongo ########
-    start = datetime(2022, 2, 19)
-    end = datetime(2022, 4, 9)
+    start = datetime(2022, 6, 20)
+    end = datetime(2022, 8, 7)
     delta = timedelta(days=1)
     d = start
     weekend = set([5, 6])
@@ -324,7 +324,9 @@ def historical_bhav_nse_update():
                 print(df_stocks_daily, flush=True)
                 print("**********************************************", flush=True)
 
-                query = "Select * FROM mapping_data_jas"
+                # query = "Select * FROM mapping_data_jas"
+                query = "Select * FROM mapping_data_jas where jas_token <= 5164;"
+
                 df_mapper = postgre_sql_read_df(query)
                 data_update_nse(df_stocks_daily, df_mapper)
 

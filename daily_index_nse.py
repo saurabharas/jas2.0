@@ -263,8 +263,8 @@ def readIndexDailyFromPandas(s_date):
 def historical_nse_index_update():
     ### For Past Update Firebase ####
 
-    start = datetime(2022, 2, 19)
-    end = datetime(2022, 4, 9)
+    start = datetime(2022, 5, 25)
+    end = datetime(2022, 8, 7)
     delta = timedelta(days=1)
     d = start
     weekend = set([5, 6])
@@ -297,9 +297,9 @@ def daily_nse_index_update():
     data_update_nse(df_index_daily, df_mapper)
 
 
-# daily_nse_index_update()
+daily_nse_index_update()
 # logging.info("Entire File Execution Complete............................")
 # print("Entire File Execution Complete............................", flush=True)
-historical_nse_index_update()
+# historical_nse_index_update()
 ### Run This For Single File ###
 # mailSend()
