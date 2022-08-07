@@ -69,8 +69,8 @@ from email import encoders
 # Python code to illustrate Sending mail with attachments
 # from your Gmail account
 def mail_send(workBookName):
-    fromaddr = "saurabharas1994@gmail.com"
-    toaddr = "j.d.gunjal@gmail.com,saxena.apoorvraj@gmail.com"
+    fromaddr = "saur.aras@gmail.com"
+    toaddr = "j.d.gunjal@gmail.com"
     ccaddr = "saur.aras@gmail.com"
     # toaddr = "saur.aras@gmail.com"
 
@@ -124,7 +124,7 @@ def mail_send(workBookName):
 
     # Authentication
     # s.login(fromaddr, "noozlmcnrnzcbhdz")
-    s.login(fromaddr, "Sau#651994")
+    s.login(fromaddr, "xknukhxeswhidnxa")
 
     # Converts the Multipart msg into a string
     text = msg.as_string()
@@ -266,7 +266,7 @@ def main_stock_momemtum_calc_jas():
 
     for key, value in tokens_df.iterrows():
         try:
-            if value["jas_token"] >= 0:
+            if value["jas_token"] <= 10:
                 jas_token = value["jas_token"]
                 trading_symbol = value["nse_symbol"]
                 name_market = value["name"]
