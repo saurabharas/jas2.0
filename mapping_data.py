@@ -211,7 +211,7 @@ def update_nifty_500():
     # )  ## Uncomment to write to the database
     # db_conn.closeConn()
 
-    print("Update Done successfully....")
+    print("Update Done successfully.....")
 
 
 # create_mapping_df(excel_file_path)
