@@ -266,7 +266,7 @@ def main_stock_momemtum_calc_jas():
 
     for key, value in tokens_df.iterrows():
         try:
-            if value["jas_token"] >= 0:
+            if value["jas_token"] <= 10:
                 jas_token = value["jas_token"]
                 trading_symbol = value["nse_symbol"]
                 name_market = value["name"]

@@ -375,8 +375,8 @@ def maindailyBhav():
     # pandaItr(df_stocks_daily)
 
 
-# maindailyBhav()
+maindailyBhav()
 # logging.info("Entire File Execution Complete............................")
 # print("Entire File Execution Complete............................")
-historical_bhav_nse_update()
+#historical_bhav_nse_update()
 # closeMongoConnection()
