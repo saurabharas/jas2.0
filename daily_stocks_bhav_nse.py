@@ -290,8 +290,8 @@ def historical_bhav_nse_update():
     # url='https://www.nseindia.com/content/historical/EQUITIES/2018/MAR/cm05MAR2018bhav.csv.zip'
 
     ## For Past Update Firebase/Mongo ########
-    start = datetime(2022, 6, 29)
-    end = datetime(2022, 8, 7)
+    start = datetime(2022, 8, 8)
+    end = datetime(2022, 9, 12)
     delta = timedelta(days=1)
     d = start
     weekend = set([5, 6])

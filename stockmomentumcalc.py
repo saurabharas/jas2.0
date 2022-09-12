@@ -266,7 +266,7 @@ def main_stock_momemtum_calc_jas():
 
     for key, value in tokens_df.iterrows():
         try:
-            if value["jas_token"] >= 0:
+            if value["jas_token"] <= 0:
                 jas_token = value["jas_token"]
                 trading_symbol = value["nse_symbol"]
                 name_market = value["name"]
@@ -397,7 +397,9 @@ def main_stock_momemtum_calc_jas():
         )
         workBookName = "stock_momentum_nifty500_" + str(latest_date) + ".xlsx"
         df_jobj_momentum.to_excel(
-            "excel_data_output/{0}".format(workBookName), sheet_name="nifty500"
+            os.path.abspath(os.getcwd())
+            + "/excel_data_output/{0}".format(workBookName),
+            sheet_name="nifty500",
         )
 
         list_mom_500 = df_jobj_momentum.to_dict("records")
