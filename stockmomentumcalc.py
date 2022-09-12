@@ -68,7 +68,7 @@ from email import encoders
 
 # Python code to illustrate Sending mail with attachments
 # from your Gmail account
-def mail_send(workBookName):
+def mail_send(workBookName, file_path):
     fromaddr = "saur.aras@gmail.com"
     toaddr = "j.d.gunjal@gmail.com"
     ccaddr = "saur.aras@gmail.com"
@@ -99,7 +99,7 @@ def mail_send(workBookName):
     msg.attach(MIMEText(body, "plain"))
 
     # open the file to be sent
-    filename = "excel_data_output/{0}".format(workBookName)
+    filename = file_path
     attachment = open(filename, "rb")
 
     # instance of MIMEBase and named as p
@@ -266,7 +266,7 @@ def main_stock_momemtum_calc_jas():
 
     for key, value in tokens_df.iterrows():
         try:
-            if value["jas_token"] <= 0:
+            if value["jas_token"] <= 10:
                 jas_token = value["jas_token"]
                 trading_symbol = value["nse_symbol"]
                 name_market = value["name"]
@@ -396,9 +396,16 @@ def main_stock_momemtum_calc_jas():
             by="adjusted_slope", ascending=False
         )
         workBookName = "stock_momentum_nifty500_" + str(latest_date) + ".xlsx"
+        # file_path = os.path.abspath(os.getcwd()) + "/excel_data_output/{0}".format(
+        #     workBookName
+        # )  # windows_file_path
+
+        file_path = "/root/jas2.0" + "/excel_data_output/{0}".format(
+            workBookName
+        )  # linux_cron_file_path
+
         df_jobj_momentum.to_excel(
-            os.path.abspath(os.getcwd())
-            + "/excel_data_output/{0}".format(workBookName),
+            file_path,
             sheet_name="nifty500",
         )
 
@@ -408,7 +415,7 @@ def main_stock_momemtum_calc_jas():
         print("Sending Mail............................", flush=True)
         logging.info("Sending Mail............................")
         time.sleep(30)
-        mail_send(workBookName)
+        mail_send(workBookName, file_path)
         logging.info("Mail Sent............................")
         print("Mail Sent............................", flush=True)
 
